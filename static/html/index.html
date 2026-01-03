@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>Simple logger app</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <script type="importmap">
+      {
+        "imports": {
+          "#ehtml/": "/js/ehtml/",
+          "#ehtml/main": "/js/ehtml/main.js"
+        }
+      }
+    </script>
+    <script type="module">
+      import '#ehtml/main'
+    </script>
+  </head>
+  <body>
+    <slot>
+
+    </slot>
+    <template
+      is="e-sse"
+      data-src="https://0.0.0.0:8004/logs"
+      data-with-credentials="true"
+      data-event-source-name="logEvents">
+      <e-json
+        data-event-source="logEvents"
+        data-event="log"
+        data-response-name="logEvent"
+        data-actions-on-response="
+          mapToTemplate('#log', logEvent)
+        "
+        data-request-headers="${{}}"
+      >
+        <template is="e-reusable"
+          id="log"
+          data-object-name="logEvent"
+          data-append-to="slot"
+          data-prepend-to="slot"
+        >
+          <e-markdown
+            data-internal-state="${logEvent.message}"
+          ></e-markdown>
+        </template>
+      </e-json>
+    </template>
+  </body>
+</html>

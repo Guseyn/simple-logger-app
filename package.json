@@ -1,0 +1,26 @@
+{
+  "name": "simple-logger-app",
+  "version": "1.0.0",
+  "description": "Example App of Using Server Side Events For Reading Logs",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "app": "node main.js",
+    "ehtml:update": "yes | cp -rf ../../my-projects/EHTML/src/ static/js/ehtml",
+    "nodes:update": "yes | cp -rf ../../my-projects/nodes.js/nodes/ nodes"
+  },
+  "imports": {
+    "#nodes/*": "./nodes/*",
+    "#endpoint-handlers/*": "./endpoint-handlers/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Guseyn/simple-logger-app.git"
+  },
+  "author": "guseyn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Guseyn/simple-logger-app/issues"
+  },
+  "homepage": "https://github.com/Guseyn/simple-logger-app#readme"
+}
